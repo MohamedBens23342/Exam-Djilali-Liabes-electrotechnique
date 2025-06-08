@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الاختبارات الجامعية</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+          /* تصميم شريط الشعارات العلوي */
+          .header-logos {
+         position: fixed;
+           top: 0;
+           width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+           background-color: #2c3e50; /* نفس لون الهيدر الرئيسي */
+          padding: 10px 20px;
+           z-index: 1000;
+           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+            .logo-left, .logo-right {
+          height: 70px;
+          width: auto;
+           max-width: 150px;
+           object-fit: contain;
+            filter: brightness(1) invert(0); /* لون أبيض للشعارات */
+          transition: transform 0.3s ease;
+          }
+          @media (max-width: 768px) {
+          .header-logos {
+           padding: 5px 10px;
+          }
+          .logo-left, .logo-right {
+          height: 40px;
+          max-width: 120px;
+          }
+           header {
+         margin-top: 60px;
+          }
+         }
+          header {
+          margin-top: 60px;
+          }
+          /* تعديل الهيدر الرئيسي ليتناسب مع الشعارات */
+         header {
+           margin-top: 70px;
+          }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #f39c12;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .level-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .option-card {
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: #f39c12;
+            color: white;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+        .breadcrumb {
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .subject-files {
+            margin-top: 20px;
+        }
+        .file-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .download-btn {
+            background-color: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+        .download-btn:hover {
+            background-color: #2ecc71;
+        }
+        .content-section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .back-btn {
+            background-color: #95a5a6;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .back-btn:hover {
+            background-color: #7f8c8d;
+        }
+        .specialty-header {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>موقع الاختبارات الجامعية</h1>
+        <p>كل ما تحتاجه من اختبارات سابقة لتحضير امتحاناتك</p>
+    </header>
+         <!-- شعارات الجامعة العلوية -->
+         <div class="header-logos">
+          <!-- الشعار الأيسر -->
+          <img src="d:\Downloads\PHOTO OF UNIVERCITY (1).png" alt="شعار الجامعة الأيسر" class="logo-left">
+    
+          <!-- عنوان الموقع (اختياري) -->
+           <div style="color: rgb(232, 228, 228); font-weight: bold; text-align: center;">
+              وزارة التعليم العالي و البحث العلمي <br>
+             <small style="font-size: 2em;">جامعة جيلالي ليابس</small>
+         </div>
+    
+           <!-- الشعار الأيمن -->
+          <img src="d:\Downloads\PHOTO OF UNIVERCITY (1).png" alt="شعار الجامعة الأيمن" class="logo-right">
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">الرئيسية</a></li>
+            <li><a href="#" onclick="showSection('mcil')">MCIL</a></li>
+            <li><a href="#" onclick="showSection('ing')">ING</a></li>
+            <li><a href="#">اتصل بنا</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- الصفحة الرئيسية -->
+        <div id="home" class="content-section active">
+            <h2 class="level-title">مرحباً بكم في موقع الاختبارات الجامعية</h2>
+            <p>هذا الموقع يوفر لك مجموعة من الاختبارات السابقة لمساعدتك في التحضير للامتحانات.</p>
+            <p>اختر التخصص الذي تريده من القائمة أعلاه للبدء.</p>
+        </div>
+
+        <!-- ========== تخصص MCIL ========== -->
+        <div id="mcil" class="content-section">
+            <div class="specialty-header">
+                <h2>تخصص MCIL</h2>
+            </div>
+            
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > MCIL
+            </div>
+
+            <h2 class="level-title">اختر السنة الدراسية</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-1')">
+                    <h3>1ère année</h3>
+                    <p>السنة الأولى</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2')">
+                    <h3>2ème année</h3>
+                    <p>السنة الثانية</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3')">
+                    <h3>3ème année</h3>
+                    <p>السنة الثالثة</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-4')">
+                    <h3>4ème année</h3>
+                    <p>السنة الرابعة</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-5')">
+                    <h3>5ème année</h3>
+                    <p>السنة الخامسة</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== السنة الأولى - MCIL ========== -->
+        <div id="mcil-1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                السنة الأولى
+            </div>
+
+            <h2 class="level-title">اختر الفصل الدراسي</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-1-sem1')">
+                    <h3>Semestre 1</h3>
+                    <p>الفصل الأول</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem2')">
+                    <h3>Semestre 2</h3>
+                    <p>الفصل الثاني</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الأول - السنة الأولى - MCIL -->
+        <div id="mcil-1-sem1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                الفصل الأول
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-1-sem1-math')">
+                    <h3>MATH 1</h3>
+                    <p>الرياضيات 1</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem1-physique')">
+                    <h3>PHYSIQUE 1</h3>
+                    <p>الفيزياء 1</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem1-methodologie')">
+                    <h3>METHODOLOGIE</h3>
+                    <p>منهجية الكتابة</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem1-chimie')">
+                    <h3>CHIMIE 1</h3>
+                    <p>الكيمياء 1</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem1-ENGLISH')">
+                    <h3>ENGLISH 1</h3>
+                    <p>الانجليزية 1</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem1-ETHICS')">
+                    <h3>ETHICS</h3>
+                    <p>اخلاقيات العمل</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem1-info')">
+                    <h3>INFORMATIQUE 1</h3>
+                    <p>الإعلام الآلي</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem1-ST')">
+                    <h3>ST 1</h3>
+                    <P>علوم و تكنولوجيا</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- مواد الفصل الأول - السنة الأولى - MCIL -->
+        <!-- الرياضيات 1 -->
+        <div id="mcil-1-sem1-math" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                الرياضيات 1
+            </div>
+
+            <h2 class="level-title">اختبارات مادة MATH 1</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الرياضيات 1 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الرياضيات 1 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الرياضيات 1 - دورة 2020</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>حلول اختبار 2019</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفيزياء 1 -->
+        <div id="mcil-1-sem1-physique" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                الفيزياء 1
+            </div>
+
+            <h2 class="level-title">اختبارات مادة PHYSIQUE 1</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الفيزياء 1 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الفيزياء 1 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الفيزياء 1 - دورة 2020</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين إضافية - الجزء الأول</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين إضافية - الجزء الثاني</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- منهجية الكتابة -->
+        <div id="mcil-1-sem1-methodologie" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                منهجية الكتابة
+            </div>
+
+            <h2 class="level-title">اختبارات مادة METHODOLOGIE</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار المنهجية - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار المنهجية - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج كتابة علمية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل كتابة البحوث</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكيمياء 1 -->
+        <div id="mcil-1-sem1-chimie" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                الكيمياء 1
+            </div>
+
+            <h2 class="level-title">اختبارات مادة CHIMIE 1</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الكيمياء 1 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الكيمياء 1 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين الكيمياء العامة</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>جدول العناصر الكيميائية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!--الانجليزية-->
+        <div id="mcil-1-sem1-ENGLISH" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                الانجليزية
+            </div>
+
+            <h2 class="level-title">اختبارات مادة ENGLISH</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الانجليزية - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الانجليزية - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج كتابة علمية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل كتابة البحوث</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+         <!--اخلاقيات العمل-->
+        <div id="mcil-1-sem1-ETHICS" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                اخلاقيات العمل
+            </div>
+            <h2 class="level-title">اختبارات مادة ETHICS</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار اخلاقيات العمل - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اخلاقيات العمل - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج كتابة علمية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل كتابة البحوث</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!-- الإعلام الآلي -->
+        <div id="mcil-1-sem1-info" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الثاني</a> > 
+                الإعلام الآلي
+            </div>
+
+            <h2 class="level-title">اختبارات مادة INFORMATIQUE 1</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الإعلام الآلي 1 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الإعلام الآلي 1 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في لغة البرمجة C</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل أساسيات البرمجة</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+       <!--علوم و تكنولوجيا-->
+        <div id="mcil-1-sem1-ST" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                علوم و تكنولوجيا
+            </div>
+
+            <h2 class="level-title">اختبارات مادة ST</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار علوم و تكنولوجيا - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار علوم و تكنولوجيا - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج كتابة علمية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل كتابة البحوث</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!-- الفصل الثاني - السنة الأولى - MCIL -->
+        <div id="mcil-1-sem2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+             الفصل الثاني
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-1-sem2-math')">
+                    <h3>MATH 2</h3>
+                    <p>الرياضيات 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem2-physique')">
+                    <h3>PHYSIQUE 2</h3>
+                    <p>الفيزياء 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem2-methodologie')">
+                    <h3>METHODOLOGIE 2</h3>
+                    <p>منهجية الكتابة 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem2-chimie')">
+                    <h3>CHIMIE 2</h3>
+                    <p>الكيمياء 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem2-ENGLISH')">
+                    <h3>ENGLISH 2</h3>
+                    <p>الانجليزية 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem2-info')">
+                    <h3>INFORMATIQUE 2</h3>
+                    <p>الإعلام الآلي 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-1-sem2-ST')">
+                    <h3>ST 2</h3>
+                    <P>علوم و تكنولوجيا 2</p>
+                </div>
+            </div>
+        </div>
+         <!-- الرياضيات 2-->
+        <div id="mcil-1-sem2-math" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الثاني</a> > 
+                الرياضيات 2
+            </div>
+
+            <h2 class="level-title">اختبارات مادة MATH 2</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الرياضيات 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الرياضيات 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الرياضيات 2 - دورة 2020</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>حلول اختبار 2019</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفيزياء 2 -->
+        <div id="mcil-1-sem2-physique" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem2')">الفصل الثاني</a> > 
+                الفيزياء 2
+            </div>
+
+            <h2 class="level-title">اختبارات مادة PHYSIQUE 2</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الفيزياء 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الفيزياء 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الفيزياء 2 - دورة 2020</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين إضافية - الجزء الأول</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين إضافية - الجزء الثاني</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 منهجية الكتابة -->
+        <div id="mcil-1-sem2-methodologie" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                منهجية الكتابة 2
+            </div>
+
+            <h2 class="level-title">اختبارات مادة METHODOLOGIE 2</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار المنهجية 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار المنهجية 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج كتابة علمية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل كتابة البحوث</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكيمياء 2 -->
+        <div id="mcil-1-sem2-chimie" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem1')">الفصل الأول</a> > 
+                الكيمياء 2
+            </div>
+
+            <h2 class="level-title">اختبارات مادة CHIMIE 1</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الكيمياء 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الكيمياء 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين الكيمياء العامة</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>جدول العناصر الكيميائية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!--الانجليزية 2-->
+        <div id="mcil-1-sem2-ENGLISH" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem2')">الفصل الثاني</a> > 
+                الانجليزية 2
+            </div>
+
+            <h2 class="level-title">اختبارات مادة ENGLISH 2</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الانجليزية 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الانجليزية 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج كتابة علمية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل كتابة البحوث</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!-- الإعلام الآلي -->
+        <div id="mcil-1-sem2-info" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem2')">الفصل الثاني</a> > 
+                الإعلام الآلي
+            </div>
+
+            <h2 class="level-title">اختبارات مادة INFORMATIQUE 2</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار الإعلام الآلي 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار الإعلام الآلي 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في لغة البرمجة C</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل أساسيات البرمجة</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+       <!--علوم و تكنولوجيا-->
+        <div id="mcil-1-sem2-ST" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-1-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-1')">السنة الأولى</a> > 
+                <a href="#" onclick="showSection('mcil-1-sem2')">الفصل الثاني</a> > 
+                علوم و تكنولوجيا
+            </div>
+
+            <h2 class="level-title">اختبارات مادة ST 2</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار علوم و تكنولوجيا 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار علوم و تكنولوجيا 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج كتابة علمية</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل كتابة البحوث</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== السنة الثانية - MCIL ========== -->
+        <div id="mcil-2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                السنة الثانية
+            </div>
+
+            <h2 class="level-title">اختر الفصل الدراسي</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-2-sem1')">
+                    <h3>Semestre 1</h3>
+                    <p>الفصل الأول</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2')">
+                    <h3>Semestre 2</h3>
+                    <p>الفصل الثاني</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الاول - السنة الثانية - MCIL -->
+        <div id="mcil-2-sem1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                الفصل الأول
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-2-sem1-ELT Fondamentale 1')">
+                    <h3>ELT Fondamentale 1</h3>
+                    <p>ELT Fondamentale 1</p>
+                </div>
+               <div class="option-card" onclick="showSection('mcil-2-sem1-Probabilites et Statistiques')">
+                    <h3>Probabilites et Statistiques</h3>
+                    <p>Probabilites et Statistiques</p>
+                </div>
+               <div class="option-card" onclick="showSection('mcil-2-sem1-Math 3')">
+                    <h3>Math 3</h3>
+                    <p>Math 3</p>
+                </div>
+               <div class="option-card" onclick="showSection('mcil-2-sem1-ELN Fondamentale 2')">
+                    <h3>ELN Fondamentale 2</h3>
+                    <p>ELN Fondamentale 2</p>
+                </div>
+               <div class="option-card" onclick="showSection('mcil-2-sem1-Ondes et Vibration')">
+                    <h3>Ondes et Vibration</h3>
+                    <p>Ondes et Vibration</p>
+                </div> 
+               <div class="option-card" onclick="showSection('mcil-2-sem1-Energies et Environnement')">
+                    <h3>Energies et Environnement</h3>
+                    <p>Energies et Environnement</p>
+                </div> 
+               <div class="option-card" onclick="showSection('mcil-2-sem1-Etat de l`art du GE')">
+                    <h3>Etat de l`art du GE</h3>
+                    <p>Etat de l`art du GE </p>
+                </div> 
+               <div class="option-card" onclick="showSection('mcil-2-sem1-Anglais technique')">
+                    <h3>Anglais technique</h3>
+                    <p>Anglais technique</p>
+                </div> 
+            </div>
+        </div>
+
+        <!-- مواد الفصل الاول - السنة الثانية - MCIL -->
+        <!-- الالكتروتقني 1 -->
+        <div id="mcil-2-sem1-ELT Fondamentale 1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+               ELT Fondamentale 1
+            </div>
+
+            <h2 class="level-title">اختبارات مادة ELT Fondamentale 1</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  ELT Fondamentale 1 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  ELT Fondamentale 1 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في تحليل  ELT Fondamentale 1</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج حلول  ELT Fondamentale 1</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+
+        <!--  Probabilites et Statistiques  -->
+        <div id="mcil-2-sem1-Probabilites et Statistiques" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+                Probabilites et Statistiques 
+            </div>
+
+            <h2 class="level-title">اختبارات مادة Probabilites et Statistiques</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>Probabilites et Statistiques  - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>Probabilites et Statistiques  - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في Probabilites et Statistiques </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل تصميم Probabilites et Statistiques </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Math 3  -->
+        <div id="mcil-2-sem1-Math 3" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+                رياضيات 3  
+            </div>
+
+            <h2 class="level-title">اختبارات مادة Math 3</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span> Math 3  - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span> Math 3  - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في  Math 3 </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل تصميم  Math 3</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  ELN Fondamentale 2  -->
+        <div id="mcil-2-sem1-ELN Fondamentale 2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+                الكترونيك 2
+            </div>
+
+            <h2 class="level-title">اختبارات مادة ELN Fondamentale 2 é</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span> ELN Fondamentale 2  - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span> ELN Fondamentale 2  - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في  ELN Fondamentale 2 </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل تصميم  ELN Fondamentale 2 </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Ondes et Vibration  -->
+        <div id="mcil-2-sem1-Ondes et Vibration" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+                الاهتزازات
+            </div>
+
+            <h2 class="level-title">اختبارات مادة Ondes et Vibration</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>Ondes et Vibration  - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>Ondes et Vibration  - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في Ondes et Vibration </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل تصميم Ondes et Vibration </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Energies et Environnement  -->
+        <div id="mcil-2-sem1-Energies et Environnement" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+                الطاقة و البيئة
+            </div>
+
+            <h2 class="level-title">اختبارات مادة Energies et Environnement</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>Energies et Environnement  - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>Energies et Environnement  - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في Energies et Environnement </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل تصميم Energies et Environnement </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Etat de l`art du GE  -->
+        <div id="mcil-2-sem1-Etat de l`art du GE" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+                Etat de l`art du GE
+            </div>
+
+            <h2 class="level-title">اختبارات مادة Etat de l`art du GE</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>Etat de l`art du GE  - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>Etat de l`art du GE  - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في Etat de l`art du GE </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل تصميم Etat de l`art du GE </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Anglais technique  -->
+        <div id="mcil-2-sem1-Anglais technique" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem1')">الفصل الأول</a> > 
+                Anglais technique
+            </div>
+
+            <h2 class="level-title">اختبارات مادة Anglais technique</h2>
+
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>Anglais technique  - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>Anglais technique  - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في Anglais technique </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>دليل تصميم Anglais technique </span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!-- الفصل الثاني - السنة الثانية - MCIL -->
+        <div id="mcil-2-sem2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                الفصل الثاني
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-2-sem2-ELT Fondamentale 2')">
+                    <h3>ELT Fondamentale 2</h3>
+                    <p>ELT Fondamentale 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2-Logique Combinatoire et Sequentielle')">
+                    <h3>Logique Combinatoire et Sequentielle</h3>
+                    <p>Logique Combinatoire et Sequentielle</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2-Methodes numeriques')">
+                    <h3>Methodes numeriques</h3>
+                    <p>Methodes numeriques</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2-Theorie du Signal')">
+                    <h3>Theorie du Signal</h3>
+                    <p>Theorie du Signal</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2-Mesures electriques et electroniques')">
+                    <h3>Mesures electriques et electroniques</h3>
+                    <p>Mesures electriques et electroniques</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2-Securite électrique')">
+                    <h3>Securite électrique</h3>
+                    <p>Securite électrique</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2-Production de l`energie électrique')">
+                    <h3>Production de l`énergie electrique</h3>
+                    <p>Production de l`énergie electrique</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-2-sem2-Techniques d`éxpression et de Comunication')">
+                    <h3>Techniques d`éxpression et de Comunication</h3>
+                    <p>Techniques d`éxpression et de Comunication</p>
+                </div>
+            </div>
+        </div>
+        <!-- مواد الفصل الثاني - السنة الثانية - MCIL -->
+        <!--  ELT Fondamentale 2 -->
+        <div id="mcil-2-sem2-ELT Fondamentale 2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               ELT Fondamentale 2
+            </div>
+            <h2 class="level-title">اختبارات مادة ELT Fondamentale 2</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  ELT Fondamentale 2 - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  ELT Fondamentale 2 - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في تحليل  ELT Fondamentale 2</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج حلول  ELT Fondamentale 2</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Logique Combinatoire et Sequentielle -->
+        <div id="mcil-2-sem2-Logique Combinatoire et Sequentielle" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               Logique Combinatoire et Sequentielle
+            </div>
+            <h2 class="level-title">اختبارات مادة Logique Combinatoire et Sequentielle</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  Logique Combinatoire et Sequentielle - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  Logique Combinatoire et Sequentielle - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في تحليل  Logique Combinatoire et Sequentielle</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج حلول  Logique Combinatoire et Sequentielle</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Methodes numeriques -->
+        <div id="mcil-2-sem2-Methodes numeriques" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               Methodes numeriques
+            </div>
+            <h2 class="level-title">اختبارات مادة Methodes numeriques</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  Methodes numeriques - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  Methodes numeriques - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في تحليل  Methodes numeriques</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج حلول  Methodes numeriques</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Theorie du Signal -->
+        <div id="mcil-2-sem2-Theorie du Signal" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               Theorie du Signal
+            </div>
+            <h2 class="level-title">اختبارات مادة Theorie du Signal</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  Theorie du Signal - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  Theorie du Signal - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في تحليل  Theorie du Signal</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج حلول  Theorie du Signal</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Mesures electriques et electroniques -->
+        <div id="mcil-2-sem2-Mesures electriques et electroniques" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               Mesures electriques et electroniques
+            </div>
+            <h2 class="level-title">اختبارات مادة Mesures electriques et electroniques</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  Mesures electriques et electroniques - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  Mesures electriques et electroniques - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>تمارين في تحليل  Mesures electriques et electroniques</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>نماذج حلول  Mesures electriques et electroniques</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Sécurite électrique -->
+        <div id="mcil-2-sem2-Sécurite électrique" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               Securite electrique
+            </div>
+            <h2 class="level-title">اختبارات مادة Sécurite électrique</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار Sécurite électrique - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  Sécurite électrique - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Production de l`énergie électrique -->
+        <div id="mcil-2-sem2-Production de l`énergie électrique" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               Production de l`énergie électrique
+            </div>
+            <h2 class="level-title">اختبارات مادة Production de l`énergie électrique</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  Production de l`énergie électrique- دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار  Production de l`énergie électrique - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Techniques d`éxpression et de Comunication -->
+        <div id="mcil-2-sem2-Techniques d`éxpression et de Comunication" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-2-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-2')">السنة الثانية</a> > 
+                <a href="#" onclick="showSection('mcil-2-sem2')">الفصل الثاني</a> > 
+               Techniques d`expression et de Comunication
+            </div>
+            <h2 class="level-title">اختبارات مادة Techniques d`éxpression et de Comunication</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>اختبار  Techniques d`éxpression et de Comunication- دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>اختبار Techniques d`éxpression et de Comunication - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!-- ========== السنة الثالثة - MCIL ========== -->
+        <div id="mcil-3" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                السنة الثالثة
+            </div>
+
+            <h2 class="level-title">اختر الفصل الدراسي</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-3-sem1')">
+                    <h3>Semestre 1</h3>
+                    <p>الفصل الأول</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem2')">
+                    <h3>Semestre 2</h3>
+                    <p>الفصل الثاني</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الأول - السنة الثالثة - MCIL -->
+        <div id="mcil-3-sem1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                الفصل الأول
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Systemes Asservis')">
+                    <h3>Systemes Asservis</h3>
+                    <p> Systemes Asservis</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Electronique de Puissance')">
+                    <h3>Electronique de Puissance</h3>
+                    <p> Electronique de Puissance</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Modelisation des Reseaux Electriques')">
+                    <h3>Modelisation des Reseaux Electriques</h3>
+                    <p> Modelisation des Reseaux Electriques</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Theorie de Champ Electromagnetique')">
+                    <h3>Theorie de Champ Electromagnetique</h3>
+                    <p> Theorie de Champ Electromagnetique</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Schema Electrique')">
+                    <h3>Schema Electrique</h3>
+                    <p> Schema Electrique</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Introduction a la haute tension')">
+                    <h3>Introduction a la haute tension</h3>
+                    <p> Introduction a la haute tension</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Metrologie en haute tension')">
+                    <h3>Metrologie en haute tension</h3>
+                    <p> Metrologie en haute tension</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem1-Logiciel de simulation')">
+                    <h3>Logiciel de simulation</h3>
+                    <p> Logiciel de simulation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- مواد الفصل الأول - السنة الثالثة - MCIL -->
+        <!--  Systemes Asservis -->
+        <div id="mcil-3-sem1-Systemes Asservis" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Systemes Asservis
+            </div>
+            <h2 class="level-title">اختبارات مادة Systemes Asservis</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Systemes Asservis - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Systemes Asservis - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Electronique de Puissance -->
+        <div id="mcil-3-sem1-Electronique de Puissance" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Electronique de Puissance
+            </div>
+            <h2 class="level-title">اختبارات مادة Electronique de Puissance</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Electronique de Puissance - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Electronique de Puissance - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Modelisation des Reseaux Electriques -->
+        <div id="mcil-3-sem1-Modelisation des Reseaux Electriques" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Modelisation des Reseaux Electriques
+            </div>
+            <h2 class="level-title">اختبارات مادة Modelisation des Reseaux Electriques</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Modelisation des Reseaux Electriques - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Modelisation des Reseaux Electriques - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Theorie de Champ Electromagnetique -->
+        <div id="mcil-3-sem1-Theorie de Champ Electromagnetique" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Theorie de Champ Electromagnetique
+            </div>
+            <h2 class="level-title">اختبارات مادة Theorie de Champ Electromagnetique</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Theorie de Champ Electromagnetique - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Theorie de Champ Electromagnetique - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Schema Electrique -->
+        <div id="mcil-3-sem1-$" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Schema Electrique
+            </div>
+            <h2 class="level-title">اختبارات مادة Schema Electrique</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Schema Electrique - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span> Schema Electrique - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Introduction a la haute tension -->
+        <div id="mcil-3-sem1-Introduction a la haute tension" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Introduction a la haute tension
+            </div>
+            <h2 class="level-title">اختبارات مادة Introduction a la haute tension</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Introduction a la haute tension - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Introduction a la haute tension - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Metrologie en haute tension -->
+        <div id="mcil-3-sem1-Metrologie en haute tension" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Metrologie en haute tension
+            </div>
+            <h2 class="level-title">اختبارات مادة Metrologie en haute tension</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Metrologie en haute tension - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Metrologie en haute tension - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Logiciel de simulation -->
+        <div id="mcil-3-sem1-Logiciel de simulation" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الأول</a> > 
+                 Logiciel de simulation
+            </div>
+            <h2 class="level-title">اختبارات مادة Logiciel de simulation</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Logiciel de simulation - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Logiciel de simulation - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!-- الفصل الثاني - السنة الثالثة - MCIL -->
+        <div id="mcil-3-sem2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                الفصل الثاني
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('mcil-3-sem2-Regulation Industrielle')">
+                    <h3>Regulation Industrielle</h3>
+                    <p>Regulation Industrielle</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem2-Commande des Machines')">
+                    <h3>Commande des Machines</h3>
+                    <p>Commande des Machines</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem2-Automatismes Industriels')">
+                    <h3>Automatismes Industriels</h3>
+                    <p>Automatismes Industriels</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem2-Materiaus En electrotechnique')">
+                    <h3>Materiaus En electrotechnique</h3>
+                    <p>Materiaus En electrotechnique</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem2-Conception Assistee Par Ordinateur')">
+                    <h3>Conception Assistee Par Ordinateur</h3>
+                    <p>Conception Assistee Par Ordinateur</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem2-Introduction a l`electrostatiqye appliquee')">
+                    <h3>Introduction a l`electrostatique appliquee</h3>
+                    <p>Introduction a l`electrostatiqye appliquee</p>
+                </div>
+                <div class="option-card" onclick="showSection('mcil-3-sem2-Etreprenariat et management d`entreprise(PPGE)')">
+                    <h3>Etreprenariat et management d`entreprise(PPGE)</h3>
+                    <p>Etreprenariat et management d`entreprise(PPGE)</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- مواد الفصل الثاني - السنة الثالثة - MCIL -->
+        <!--  Regulation Industrielle -->
+        <div id="mcil-3-sem2-Regulation Industrielle" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الثاني</a> > 
+                 Regulation Industrielle
+            </div>
+            <h2 class="level-title">اختبارات مادة Regulation Industrielle</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Regulation Industrielle - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Regulation Industrielle - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Commande des Machines -->
+        <div id="mcil-3-sem2-Commande des Machines" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الثاني</a> > 
+                 Commande des Machines
+            </div>
+            <h2 class="level-title">اختبارات مادة Commande des Machines</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Commande des Machines - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Commande des Machines - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Automatismes Industriels -->
+        <div id="mcil-3-sem2-Automatismes Industriels" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الثاني</a> > 
+                 Automatismes Industriels
+            </div>
+            <h2 class="level-title">اختبارات مادة Automatismes Industriels</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Automatismes Industriels - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Automatismes Industriels - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Materiaus En electrotechnique -->
+        <div id="mcil-3-sem2-Materiaus En electrotechnique" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الثاني</a> > 
+                 Materiaus En electrotechnique
+            </div>
+            <h2 class="level-title">اختبارات مادة Materiaus En electrotechnique</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Materiaus En electrotechnique - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Materiaus En electrotechnique - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Conception Assistee Par Ordinateur -->
+        <div id="mcil-3-sem2-Conception Assistee Par Ordinateur" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الثاني</a> > 
+                 Conception Assistee Par Ordinateur
+            </div>
+            <h2 class="level-title">اختبارات مادة Conception Assistee Par Ordinateur</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Conception Assistee Par Ordinateur - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Conception Assistee Par Ordinateur - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Introduction a l`electrostatique appliquee -->
+        <div id="mcil-3-sem2-Introduction a l`electrostatique appliquee" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الثاني</a> > 
+                 Introduction a l`electrostatique appliquee
+            </div>
+            <h2 class="level-title">اختبارات مادة Introduction a l`electrostatique appliquee</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span> Introduction a l`electrostatique appliquee - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span> Introduction a l`electrostatique appliquee - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!--  Etreprenariat et management d`entreprise(PPGE) -->
+        <div id="mcil-3-sem2-Etreprenariat et management d`entreprise(PPGE)" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('mcil-3-sem2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('mcil')">MCIL</a> > 
+                <a href="#" onclick="showSection('mcil-3')">السنة الثالثة</a> > 
+                <a href="#" onclick="showSection('mcil-3-sem1')">الفصل الثاني</a> > 
+                 Etreprenariat et management d`entreprise(PPGE)
+            </div>
+            <h2 class="level-title">اختبارات مادة Etreprenariat et management d`entreprise(PPGE)</h2>
+            <div class="subject-files">
+                <div class="file-item">
+                    <span>  Etreprenariat et management d`entreprise(PPGE) - دورة 2022</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+                <div class="file-item">
+                    <span>  Etreprenariat et management d`entreprise(PPGE) - دورة 2021</span>
+                    <a href="#" class="download-btn">تحميل</a>
+                </div>
+            </div>
+        </div>
+        <!-- ========== تخصص ING ========== -->
+        <div id="ing" class="content-section">
+            <div class="specialty-header">
+                <h2>تخصص ING</h2>
+            </div>
+            
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > ING
+            </div>
+
+            <h2 class="level-title">اختر السنة الدراسية</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-1')">
+                    <h3>1ère année</h3>
+                    <p>السنة الأولى</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2')">
+                    <h3>2ème année</h3>
+                    <p>السنة الثانية</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3')">
+                    <h3>3ème année</h3>
+                    <p>السنة الثالثة</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== السنة الأولى - ING ========== -->
+        <div id="ing-1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                السنة الأولى
+            </div>
+
+            <h2 class="level-title">اختر الفصل الدراسي</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-1-sem1')">
+                    <h3>Semestre 1</h3>
+                    <p>الفصل الأول</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-1-sem2')">
+                    <h3>Semestre 2</h3>
+                    <p>الفصل الثاني</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الأول - السنة الأولى - ING -->
+        <div id="ing-1-sem1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing-1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                <a href="#" onclick="showSection('ing-1')">السنة الأولى</a> > 
+                الفصل الأول
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-1-sem1-math')">
+                    <h3>MATH 1</h3>
+                    <p>الرياضيات 1</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-1-sem1-physique')">
+                    <h3>PHYSIQUE 1</h3>
+                    <p>الفيزياء 1</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-1-sem1-chimie')">
+                    <h3>CHIMIE 1</h3>
+                    <p>الكيمياء 1</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-1-sem1-mecanique')">
+                    <h3>MECANIQUE</h3>
+                    <p>الميكانيك</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الثاني - السنة الأولى - ING -->
+        <div id="ing-1-sem2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing-1')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                <a href="#" onclick="showSection('ing-1')">السنة الأولى</a> > 
+                الفصل الثاني
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-1-sem2-math')">
+                    <h3>MATH 2</h3>
+                    <p>الرياضيات 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-1-sem2-physique')">
+                    <h3>PHYSIQUE 2</h3>
+                    <p>الفيزياء 2</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-1-sem2-info')">
+                    <h3>INFORMATIQUE</h3>
+                    <p>الإعلام الآلي</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-1-sem2-electronique')">
+                    <h3>ELECTRONIQUE</h3>
+                    <p>الإلكترونيات</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== السنة الثانية - ING ========== -->
+        <div id="ing-2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                السنة الثانية
+            </div>
+
+            <h2 class="level-title">اختر الفصل الدراسي</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-2-sem1')">
+                    <h3>Semestre 1</h3>
+                    <p>الفصل الأول</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2-sem2')">
+                    <h3>Semestre 2</h3>
+                    <p>الفصل الثاني</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الأول - السنة الثانية - ING -->
+        <div id="ing-2-sem1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing-2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                <a href="#" onclick="showSection('ing-2')">السنة الثانية</a> > 
+                الفصل الأول
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-2-sem1-thermo')">
+                    <h3>THERMODYNAMIQUE</h3>
+                    <p>الديناميكا الحرارية</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2-sem1-mecfluide')">
+                    <h3>MECANIQUE DES FLUIDES</h3>
+                    <p>ميكانيك الموائع</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2-sem1-resistance')">
+                    <h3>RESISTANCE DES MATERIAUX</h3>
+                    <p>مقاومة المواد</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2-sem1-dessin')">
+                    <h3>DESSIN TECHNIQUE</h3>
+                    <p>الرسم التقني</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الثاني - السنة الثانية - ING -->
+        <div id="ing-2-sem2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing-2')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                <a href="#" onclick="showSection('ing-2')">السنة الثانية</a> > 
+                الفصل الثاني
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-2-sem2-automatique')">
+                    <h3>AUTOMATIQUE</h3>
+                    <p>الأتمتة</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2-sem2-machines')">
+                    <h3>MACHINES ELECTRIQUES</h3>
+                    <p>الآلات الكهربائية</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2-sem2-energie')">
+                    <h3>ENERGIE RENOUVELABLE</h3>
+                    <p>الطاقة المتجددة</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-2-sem2-projet')">
+                    <h3>PROJET INDUSTRIEL</h3>
+                    <p>المشروع الصناعي</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== السنة الثالثة - ING ========== -->
+        <div id="ing-3" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                السنة الثالثة
+            </div>
+
+            <h2 class="level-title">اختر الفصل الدراسي</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-3-sem1')">
+                    <h3>Semestre 1</h3>
+                    <p>الفصل الأول</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3-sem2')">
+                    <h3>Semestre 2</h3>
+                    <p>الفصل الثاني</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الأول - السنة الثالثة - ING -->
+        <div id="ing-3-sem1" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing-3')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                <a href="#" onclick="showSection('ing-3')">السنة الثالثة</a> > 
+                الفصل الأول
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-3-sem1-gestion')">
+                    <h3>GESTION DE PROJET</h3>
+                    <p>إدارة المشاريع</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3-sem1-qualite')">
+                    <h3>QUALITE ET NORMES</h3>
+                    <p>الجودة والمعايير</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3-sem1-robotique')">
+                    <h3>ROBOTIQUE INDUSTRIELLE</h3>
+                    <p>الروبوتات الصناعية</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3-sem1-maintenance')">
+                    <h3>MAINTENANCE INDUSTRIELLE</h3>
+                    <p>الصيانة الصناعية</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفصل الثاني - السنة الثالثة - ING -->
+        <div id="ing-3-sem2" class="content-section">
+            <a href="#" class="back-btn" onclick="showSection('ing-3')">رجوع</a>
+            <div class="breadcrumb">
+                <a href="#" onclick="showSection('home')">الرئيسية</a> > 
+                <a href="#" onclick="showSection('ing')">ING</a> > 
+                <a href="#" onclick="showSection('ing-3')">السنة الثالثة</a> > 
+                الفصل الثاني
+            </div>
+
+            <h2 class="level-title">اختر المادة</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="showSection('ing-3-sem2-innovation')">
+                    <h3>INNOVATION TECHNOLOGIQUE</h3>
+                    <p>الابتكار التكنولوجي</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3-sem2-logistique')">
+                    <h3>LOGISTIQUE INDUSTRIELLE</h3>
+                    <p>اللوجستيك الصناعي</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3-sem2-entrepreneuriat')">
+                    <h3>ENTREPRENEURIAT</h3>
+                    <p>ريادة الأعمال</p>
+                </div>
+                <div class="option-card" onclick="showSection('ing-3-sem2-pfe')">
+                    <h3>PROJET DE FIN D'ETUDES</h3>
+                    <p>مشروع نهاية الدراسة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>موقع الاختبارات الجامعية 2025</p>
+        <p>تصميم وتطوير: Mohamed Benslaim  </p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // إخفاء جميع الأقسام
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // إظهار القسم المطلوب
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+            
+            // التمرير إلى أعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
